@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Cliente {
     @Id
-    private int cpf;
+    private long cpf;
     private String nome;
     private String email;
     private String senha;

@@ -31,7 +31,7 @@ public class ClienteController {
     }
 
     @GetMapping("/nexthome/cliente/{codigo}")
-    public Cliente carregar(@PathVariable("cpf") int cpf){
+    public Cliente carregar(@PathVariable("cpf") long cpf){
         if(bd.existsById(cpf)){
             return bd.findById(cpf).get();
         } else {
@@ -40,7 +40,7 @@ public class ClienteController {
     }
 
     @DeleteMapping("/nexthome/cliente/{codigo}")
-    public void apagar(@PathVariable("cpf") int cpf){
+    public void apagar(@PathVariable("cpf") long cpf){
         bd.deleteById(cpf);
         System.out.println("cliente removido com sucesso!");
     }
