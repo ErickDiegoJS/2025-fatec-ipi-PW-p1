@@ -22,4 +22,5 @@ public class Imovel {
     private String tipo; // casa ou apartamento
     private double valor;
     private String status; // disponivel para aluguel, disponive para venda, vendida, alugada
+    private int destaque;
 }
