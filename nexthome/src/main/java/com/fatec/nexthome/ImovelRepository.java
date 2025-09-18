@@ -15,7 +15,7 @@ JpaRepository<Imovel, Integer>{
     public List<Imovel> listarVitrine();
 
     
-    @Query("SELECT i FROM Imovel i WHERE i.estado LIKE %:termo% OR WHERE i.cidade LIKE %:termo% OR i.tipo LIKE %:termo% OR i.status LIKE %:termo%")
+    @Query("SELECT i FROM Imovel i WHERE i.estado LIKE %:termo% OR i.cidade LIKE %:termo% OR i.tipo LIKE %:termo% OR i.status LIKE %:termo%")
     public List<Imovel> fazerBusca(@Param("termo") String termo);
 
 }

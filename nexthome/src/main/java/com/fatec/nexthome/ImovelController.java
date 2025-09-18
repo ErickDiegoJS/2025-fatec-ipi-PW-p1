@@ -50,12 +50,12 @@ public class ImovelController {
         return bd.findAll();
     }
 
-    @GetMapping("/api/produtos/vitrine")
+    @GetMapping("/nexthome/produtos/vitrine")
     public List<Imovel> mostrarVitrine() {
         return bd.listarVitrine();
     }
 
-    @GetMapping("/api/produtos/busca")      
+    @GetMapping("/nexthome/produtos/busca")      
     public List<Imovel> buscarProdutos(@RequestParam String termo) {
         return bd.fazerBusca(termo);
     }

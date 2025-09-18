@@ -1,6 +1,6 @@
 package com.fatec.nexthome;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.Entity; 
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,4 +23,5 @@ public class Cliente {
     private String cep;
     private String endereco;
     private int status;
+    private int ativo;
 }
