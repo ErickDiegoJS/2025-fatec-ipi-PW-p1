@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class ClienteController {
     @Autowired 
     ClienteRepository bd;
-    @Autowired 
-    TokenRepository bdToken;
     @Autowired
     NextHomeService service;
 
@@ -72,55 +70,51 @@ public class ClienteController {
     }
 
     @PatchMapping("/nexthome/cliente/email/senha/{cpf}")
-    public void enviarTokenSenha(@PathVariable("cpf") long cpf) {
-        Token t = new Token(cpf);
-        bdToken.save(t);
+    public void enviarEmailSenha(@PathVariable("cpf") long cpf) {
         var cliente = bd.findById(cpf).get();
         var corpo = String.format(
-            "Acesse o link abaixo para redefinir a senha:\nhttp://localhost:8082/nexthome/cliente/senha"
+            "Acesse o link abaixo para redefinir a senha:\nhttp://localhost:8082/nexthome/cliente/senha/%d",
+            cpf
         );
         String msg = service.enviarEmail(cliente.getEmail(), "Redefinição de senha", corpo);
         System.out.println(msg);
     }
     
     @PatchMapping("/nexthome/cliente/email/ativo/{cpf}")
-    public void enviarTokenAtivo(@PathVariable("cpf") long cpf) {
-        Token t = new Token(cpf);
-        bdToken.save(t);
+    public void enviarEmailAtivo(@PathVariable("cpf") long cpf) {
         var cliente = bd.findById(cpf).get();
         var corpo = String.format(
-            "Acesse o link abaixo para ativar sua conta:\nhttp://localhost:8082/nexthome/cliente/ativo"
+            "Acesse o link abaixo para ativar sua conta:\nhttp://localhost:8082/nexthome/cliente/ativo/%d",
+            cpf
         );
         String msg = service.enviarEmail(cliente.getEmail(), "Ativar conta", corpo);
         System.out.println(msg);
     }
 
-    @PatchMapping("/nexthome/cliente/ativo")
-    public Cliente ativarConta(@RequestBody long token){
-        Optional<Token> retorno = bdToken.findById(token);
+    @PutMapping("/nexthome/cliente/ativo/{cpf}")
+    public Cliente ativarConta(@PathVariable("cpf") long cpf){
+        Optional<Cliente> retorno = bd.findById(cpf);
         if(retorno.isPresent()){
-            var obj = retorno.get();
-            if(bd.existsById(obj.getCpf())){
-                Cliente cliente = bd.findById(obj.getCpf()).get();
-                cliente.setAtivo(1);
-                bd.save(cliente);
-                bdToken.deleteById(token);
-                System.out.println("Conta ativada com sucesso!");
-                return cliente;
-            }
+            var cliente = retorno.get();
+            if(cliente.getAtivo() == 1){return retorno.get();}
+            cliente.setAtivo(1);
+            bd.save(cliente);
+            String msg = service.enviarEmail(cliente.getEmail(), "Conta ativada", "Olá, tudo bem?\nSua conta foi ativada com sucesso, você já pode voltar a utilizar nosso site.\nBoas compras!");
+            System.out.println(msg);
+            return cliente;
         }
         return new Cliente();
     }
 
-    @PatchMapping("/nexthome/cliente/senha")
-    public Cliente redefinirSenha(@RequestBody Token obj){
-        Optional<Token> retorno = bdToken.findById(obj.getCpf());
-        if(retorno.isPresent() && bd.existsById(obj.getCpf())){
+    @PutMapping("/nexthome/cliente/senha/{cpf}")
+    public Cliente redefinirSenha(@RequestBody Cliente obj, @PathVariable("cpf") long cpf){
+        Optional<Cliente> retorno = bd.findById(obj.getCpf());
+        if(retorno.isPresent()){
             Cliente cliente = bd.findById(obj.getCpf()).get();
-            cliente.setSenha(obj.getNovaSenha());
+            cliente.setSenha(obj.getSenha());
             bd.save(cliente);
-            System.out.println("Senha alterada com sucesso!");
-            bdToken.deleteById(obj.getCpf());
+            String msg = service.enviarEmail(cliente.getEmail(), "Redefinição de senha", "Sua senha foi redefinida com sucesso!\nVolte a pagina de login e tente novamente com a nova senha.");
+            System.out.println(msg);
             return cliente;
         }
         return new Cliente();
