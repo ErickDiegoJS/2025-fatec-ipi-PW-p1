@@ -27,9 +27,10 @@ public class PedidoController {
         bd.save(obj);
         var cliente = bdCliente.findById(obj.getCpf()).get();
         var corpo = String.format(
-            "Pedido feito com sucesso! Segue os detalhes do pedido:\nCodigo do pedido: %d\nCpf do cliente: %d\nNome do cliente: %s\nValor: %d",
+            "Pedido feito com sucesso! Segue os detalhes do pedido:\nCodigo do pedido: %d\nCpf do cliente: %d\nNome do cliente: %s\nValor: %f",
             obj.getCodigo(), obj.getCpf(), obj.getNome(), obj.getValor()
         );
+        
         String msg = service.enviarEmail(cliente.getEmail(), "Cofirmação de pedido", corpo);
         System.out.println(msg);
     }

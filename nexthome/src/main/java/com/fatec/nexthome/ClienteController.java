@@ -91,7 +91,7 @@ public class ClienteController {
         System.out.println(msg);
     }
 
-    @PutMapping("/nexthome/cliente/ativo/{cpf}")
+    @PatchMapping("/nexthome/cliente/ativo/{cpf}")
     public Cliente ativarConta(@PathVariable("cpf") long cpf){
         Optional<Cliente> retorno = bd.findById(cpf);
         if(retorno.isPresent()){
@@ -106,7 +106,7 @@ public class ClienteController {
         return new Cliente();
     }
 
-    @PutMapping("/nexthome/cliente/senha/{cpf}")
+    @PatchMapping("/nexthome/cliente/senha/{cpf}")
     public Cliente redefinirSenha(@RequestBody Cliente obj, @PathVariable("cpf") long cpf){
         Optional<Cliente> retorno = bd.findById(obj.getCpf());
         if(retorno.isPresent()){
