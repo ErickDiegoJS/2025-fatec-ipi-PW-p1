@@ -15,7 +15,4 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long>{
 
     @Query(value="select * from cliente where ativo=0", nativeQuery = true)
     public List<Cliente> listarInativos();
-
-    @Query(value="select * from token where token=?1", nativeQuery = true)
-    public Optional<Token> verificarToken(long token);
 }

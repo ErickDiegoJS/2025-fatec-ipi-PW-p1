@@ -22,6 +22,5 @@ public class Cliente {
     private String cidade;
     private String cep;
     private String endereco;
-    private int status;
     private int ativo;
 }

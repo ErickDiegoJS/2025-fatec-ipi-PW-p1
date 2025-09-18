@@ -2,7 +2,6 @@ package com.fatec.nexthome;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -72,43 +71,37 @@ public class ClienteController {
         }
     }
 
-    @PatchMapping("/nexthome/cliente/email/{cpf}")
+    @PatchMapping("/nexthome/cliente/email/senha/{cpf}")
     public void enviarTokenSenha(@PathVariable("cpf") long cpf) {
-        Random gerador = new Random();
-        int token = 1000 + gerador.nextInt(9000);
-        Token t = new Token(token, cpf);
+        Token t = new Token(cpf);
         bdToken.save(t);
         var cliente = bd.findById(cpf).get();
         var corpo = String.format(
-            "Seu token: %d\nAcesse o link abaixo para redefinir a senha:\nhttp://localhost:8082/nexthome/cliente/senha"
+            "Acesse o link abaixo para redefinir a senha:\nhttp://localhost:8082/nexthome/cliente/senha"
         );
         String msg = service.enviarEmail(cliente.getEmail(), "Redefinição de senha", corpo);
         System.out.println(msg);
     }
-
+    
     @PatchMapping("/nexthome/cliente/email/ativo/{cpf}")
     public void enviarTokenAtivo(@PathVariable("cpf") long cpf) {
-        Random gerador = new Random();
-        int token = 1000 + gerador.nextInt(9000);
-        Token t = new Token(token, cpf);
+        Token t = new Token(cpf);
         bdToken.save(t);
         var cliente = bd.findById(cpf).get();
         var corpo = String.format(
-            "Seu token: %d\nAcesse o link abaixo para ativar sua conta:\nhttp://localhost:8082/nexthome/cliente/ativo/%d",
-            token
+            "Acesse o link abaixo para ativar sua conta:\nhttp://localhost:8082/nexthome/cliente/ativo"
         );
         String msg = service.enviarEmail(cliente.getEmail(), "Ativar conta", corpo);
         System.out.println(msg);
     }
 
-    @PatchMapping("/nexthome/cliente/ativo/{token}")
-    public Cliente ativarConta(@PathVariable long token){
-        Optional<Token> retorno = bdToken.verificarToken(token);
+    @PatchMapping("/nexthome/cliente/ativo")
+    public Cliente ativarConta(@RequestBody long token){
+        Optional<Token> retorno = bdToken.findById(token);
         if(retorno.isPresent()){
             var obj = retorno.get();
             if(bd.existsById(obj.getCpf())){
-                var cpf = obj.getCpf();
-                Cliente cliente = bd.findById(cpf).get();
+                Cliente cliente = bd.findById(obj.getCpf()).get();
                 cliente.setAtivo(1);
                 bd.save(cliente);
                 bdToken.deleteById(token);
@@ -121,13 +114,13 @@ public class ClienteController {
 
     @PatchMapping("/nexthome/cliente/senha")
     public Cliente redefinirSenha(@RequestBody Token obj){
-        Optional<Token> retorno = bdToken.verificarToken(obj.getToken());
+        Optional<Token> retorno = bdToken.findById(obj.getCpf());
         if(retorno.isPresent() && bd.existsById(obj.getCpf())){
             Cliente cliente = bd.findById(obj.getCpf()).get();
             cliente.setSenha(obj.getNovaSenha());
             bd.save(cliente);
             System.out.println("Senha alterada com sucesso!");
-            bdToken.deleteById(obj.getToken());
+            bdToken.deleteById(obj.getCpf());
             return cliente;
         }
         return new Cliente();

@@ -1,6 +1,6 @@
 package com.fatec.nexthome;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.Entity; 
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,16 +12,11 @@ import lombok.NoArgsConstructor;
 @Getter
 @Setter
 @Entity
-public class Token {
+public class Pedido {
     @Id
+    private long codigo;
     private long cpf;
-    private String novaSenha;
-
-    public Token(long cpf) {
-        this.cpf = cpf;
-    }
-
-    public Token(String novSenha){
-        this.novaSenha = novSenha;
-    }
+    private String nome;
+    private int codigo_imovel;
+    private double valor;
 }
