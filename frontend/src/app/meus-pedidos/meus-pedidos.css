@@ -1,0 +1,151 @@
+.meus-pedidos-container {
+  min-height: 100vh;
+  background: var(--black-deep);
+  padding: 40px 20px;
+}
+
+.meus-pedidos-header {
+  text-align: center;
+  margin-bottom: 40px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.titulo {
+  font-size: 36px;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.descricao {
+  font-size: 16px;
+  color: var(--text-light);
+}
+
+.carregando {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.carregando h2 {
+  color: var(--gold);
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.carregando p {
+  color: var(--text-light);
+  font-size: 16px;
+}
+
+.mensagem-vazia {
+  text-align: center;
+  padding: 40px;
+  background: var(--graphite);
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.mensagem-vazia p {
+  color: var(--text-light);
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ======= LISTA DE PEDIDOS ======= */
+.pedidos-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pedido-card {
+  background: var(--graphite);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.45);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pedido-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+}
+
+.pedido-header {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+  padding: 15px;
+  border-bottom: 1px solid #444;
+}
+
+.pedido-info {
+  margin: 0;
+}
+
+.pedido-codigo {
+  color: var(--gold);
+  font-size: 18px;
+  margin: 0 0 5px 0;
+  font-weight: 600;
+}
+
+.pedido-imovel {
+  color: var(--text-light);
+  font-size: 14px;
+  margin: 0;
+}
+
+.pedido-body {
+  padding: 20px;
+}
+
+.pedido-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #2a2a2d;
+}
+
+.pedido-row:last-child {
+  border-bottom: none;
+}
+
+.pedido-label {
+  color: var(--gray-light);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pedido-valor {
+  color: var(--text-light);
+  font-size: 14px;
+  word-break: break-word;
+  text-align: right;
+  max-width: 60%;
+}
+
+.pedido-valor-destaque {
+  color: var(--gold);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* ======= RESPONSIVO ======= */
+@media (max-width: 768px) {
+  .meus-pedidos-container {
+    padding: 20px 10px;
+  }
+
+  .titulo {
+    font-size: 28px;
+  }
+
+  .pedidos-lista {
+    grid-template-columns: 1fr;
+  }
+}

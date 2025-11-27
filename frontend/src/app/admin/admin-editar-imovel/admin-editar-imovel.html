@@ -1,0 +1,86 @@
+<div class="admin-container">
+  <div class="admin-card">
+    <h2 class="titulo">Editar Imóvel</h2>
+
+    <!-- Busca de Imóvel -->
+    <div class="busca-imovel">
+      <div class="form-group">
+        <label for="codigo">Código do Imóvel</label>
+        <input 
+          type="number" 
+          id="codigo" 
+          [(ngModel)]="codigo" 
+          placeholder="Digite o código"
+          (keyup.enter)="buscarImovel()">
+      </div>
+      <button class="btn-buscar" (click)="buscarImovel()" [disabled]="carregando">
+        {{ carregando ? 'Buscando...' : 'Buscar' }}
+      </button>
+    </div>
+
+    <!-- Mensagem -->
+    <div *ngIf="mensagem" [ngClass]="tipoMensagem === 'sucesso' ? 'mensagem-sucesso' : 'mensagem-erro'" class="mensagem">
+      {{ mensagem }}
+    </div>
+
+    <!-- Formulário de Edição -->
+    <form *ngIf="imovel" class="form-imovel">
+      <fieldset>
+        <legend>Dados do Imóvel</legend>
+
+        <div class="form-group">
+          <label for="codigo-display">Código</label>
+          <input type="number" id="codigo-display" [(ngModel)]="imovel.codigo" name="codigo" disabled>
+        </div>
+
+        <div class="form-group">
+          <label for="tipo">Tipo</label>
+          <input type="text" id="tipo" [(ngModel)]="imovel.tipo" name="tipo" placeholder="Casa, Apartamento...">
+        </div>
+
+        <div class="form-group">
+          <label for="endereco">Endereço</label>
+          <input type="text" id="endereco" [(ngModel)]="imovel['endereço']" name="endereco" placeholder="Rua, Número...">
+        </div>
+
+        <div class="form-group">
+          <label for="cidade">Cidade</label>
+          <input type="text" id="cidade" [(ngModel)]="imovel.cidade" name="cidade">
+        </div>
+
+        <div class="form-group">
+          <label for="estado">Estado</label>
+          <input type="text" id="estado" [(ngModel)]="imovel.estado" name="estado">
+        </div>
+
+        <div class="form-group">
+          <label for="cep">CEP</label>
+          <input type="text" id="cep" [(ngModel)]="imovel.cep" name="cep">
+        </div>
+
+        <div class="form-group">
+          <label for="valor">Valor</label>
+          <input type="number" id="valor" [(ngModel)]="imovel.valor" name="valor" step="0.01">
+        </div>
+
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select id="status" [(ngModel)]="imovel.status" name="status">
+            <option value="disponivel para aluguel">Disponível para Aluguel</option>
+            <option value="disponivel para venda">Disponível para Venda</option>
+            <option value="indisponivel">Indisponível</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="destaque">Destaque</label>
+          <input type="number" id="destaque" [(ngModel)]="imovel.destaque" name="destaque">
+        </div>
+      </fieldset>
+
+      <button type="button" class="btn-salvar" (click)="salvarAlteracoes()" [disabled]="salvando">
+        {{ salvando ? 'Salvando...' : 'Salvar Alterações' }}
+      </button>
+    </form>
+  </div>
+</div>

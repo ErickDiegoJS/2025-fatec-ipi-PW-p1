@@ -1,6 +1,8 @@
 package com.fatec.nexthome;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,6 +16,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Imovel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
     private String cep;
     private String cidade;
@@ -21,6 +24,6 @@ public class Imovel {
     private String endereço;
     private String tipo; // casa ou apartamento
     private double valor;
-    private String status; // disponivel para aluguel, disponive para venda, vendida, alugada
-    private int destaque;
+    private String status; // disponivel para aluguel, disponive para venda, indisponivel
+    private int destaque; // 0 -> 3
 }

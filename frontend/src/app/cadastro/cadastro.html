@@ -1,0 +1,66 @@
+<div class="cadastro-container" *ngIf="!mensagemFinal">
+  <div class="cadastro-card">
+
+    <h2>Criar Conta</h2>
+    <p>Preencha os dados para continuar</p>
+
+    <form class="cadastro-form" (ngSubmit)="cadastrar()" novalidate>
+
+      <div class="input-group">
+        <label for="cpf">CPF (11 dígitos)</label>
+        <input id="cpf" type="text" [(ngModel)]="cliente.cpf" name="cpf" placeholder="12345678901" required>
+      </div>
+
+      <div class="input-group">
+        <label for="nome">Nome completo</label>
+        <input id="nome" type="text" [(ngModel)]="cliente.nome" name="nome" required>
+      </div>
+
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" [(ngModel)]="cliente.email" name="email" required>
+      </div>
+
+      <div class="input-group">
+        <label for="telefone">Telefone</label>
+        <input id="telefone" type="tel" [(ngModel)]="cliente.telefone" name="telefone" required>
+      </div>
+
+      <div class="input-group">
+        <label for="cidade">Cidade</label>
+        <input id="cidade" type="text" [(ngModel)]="cliente.cidade" name="cidade" required>
+      </div>
+
+      <div class="input-group">
+        <label for="cep">CEP</label>
+        <input id="cep" type="text" [(ngModel)]="cliente.cep" name="cep" required>
+      </div>
+
+      <div class="input-group">
+        <label for="endereco">Endereço</label>
+        <input id="endereco" type="text" [(ngModel)]="cliente.endereco" name="endereco" required>
+      </div>
+
+      <div class="input-group">
+        <label for="senha">Senha</label>
+        <input id="senha" type="password" [(ngModel)]="cliente.senha" name="senha" required>
+      </div>
+
+      <button class="btn-cadastrar" type="submit">Cadastrar</button>
+
+      <div class="extra-links">
+        <a routerLink="/login">Já tenho conta</a>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+<!-- Mensagem exibida após cadastrar -->
+<div class="cadastro-container" *ngIf="mensagemFinal">
+  <div class="cadastro-card">
+    <h2>Verifique seu Email 📩</h2>
+    <p>Foi enviado um email para ativação da sua conta.</p>
+  </div>
+</div>

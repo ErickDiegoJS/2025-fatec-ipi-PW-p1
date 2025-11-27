@@ -1,0 +1,44 @@
+body {
+  background: var(--black-deep);
+  color: var(--gray-light);
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.sobre-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.sobre-card {
+  background: var(--graphite);
+  width: 800px;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.45);
+}
+
+.titulo-sobre {
+  text-align: center;
+  color: var(--gold);
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+
+.texto-sobre {
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  color: var(--gray-light);
+}
+
+.texto-sobre strong {
+  color: var(--gold);
+}
+
+.final {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 18px;
+}

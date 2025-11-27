@@ -1,0 +1,67 @@
+.acesso-negado-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: var(--black-deep);
+}
+
+.acesso-negado-card {
+  background: var(--graphite);
+  width: 100%;
+  max-width: 500px;
+  padding: 50px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.45);
+  text-align: center;
+}
+
+.icone-acesso {
+  font-size: 80px;
+  color: #c92a2a;
+  margin-bottom: 20px;
+}
+
+.icone-acesso .material-icons {
+  font-size: 80px;
+}
+
+.acesso-negado-card h1 {
+  color: var(--gold);
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.acesso-negado-card p {
+  color: var(--text-light);
+  font-size: 16px;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.btn-home {
+  background: var(--gold);
+  color: var(--black-deep);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 30px auto 0;
+  transition: 0.3s;
+}
+
+.btn-home:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+.btn-home .material-icons {
+  font-size: 20px;
+}

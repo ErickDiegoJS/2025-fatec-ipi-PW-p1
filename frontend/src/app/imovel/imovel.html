@@ -1,0 +1,54 @@
+<div class="imovel-container" *ngIf="imovel">
+
+  <div class="imovel-card">
+
+    <div class="imovel-imagem">
+      <img [src]="imovel.codigo + '.jpg'" [alt]="imovel.tipo">
+    </div>
+
+    <div class="imovel-info">
+
+      <h1 class="titulo-imovel">{{ imovel.tipo }}</h1>
+
+      <p class="localizacao">
+        <span class="material-icons">location_on</span>
+        {{ imovel.cidade }} — {{ imovel.estado }}
+      </p>
+
+      <p class="descricao">
+        Endereço: {{ imovel['endereço'] }} <br>
+        CEP: {{ imovel.cep }}
+      </p>
+
+      <div class="caracteristicas">
+
+        <div class="caracteristica-item">
+          <span class="material-icons">sell</span>
+          Código: {{ imovel.codigo }}
+        </div>
+
+        <div class="caracteristica-item">
+          <span class="material-icons">check_circle</span>
+          Status: {{ imovel.status }}
+        </div>
+
+      </div>
+
+      <div class="preco">
+        <span class="valor">R$ {{ imovel.valor | number:'1.2-2' }}</span>
+        <span class="condicao">({{ imovel.status }})</span>
+      </div>
+
+      <button class="btn-comprar" (click)="comprarOuAlugar()">
+        <span class="material-icons">shopping_cart</span>
+        Comprar / Alugar
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<!-- Caso o imóvel ainda não tenha carregado -->
+<div *ngIf="!imovel" class="text-center text-light">
+  Carregando informações do imóvel...
+</div>

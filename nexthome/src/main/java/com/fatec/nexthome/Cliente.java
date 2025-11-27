@@ -23,6 +23,7 @@ public class Cliente {
     private String cep;
     private String endereco;
     private int ativo;
+    private String papel;
     public Cliente(String senha) {
         this.senha = senha;
     }

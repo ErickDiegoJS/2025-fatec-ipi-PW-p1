@@ -1,0 +1,31 @@
+<div class="login-container">
+  <div class="login-card">
+
+    <div class="login-logo">
+      <img src="/logo.png" alt="NextHome Imóveis">
+      <h2>Bem-vindo</h2>
+      <p>Entre para continuar</p>
+    </div>
+
+    <form class="login-form" (ngSubmit)="login()">
+
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="seuemail@email.com" [(ngModel)]="email" name="email" required>
+      </div>
+
+      <div class="input-group">
+        <label for="senha">Senha</label>
+        <input id="senha" type="password" placeholder="••••••••" [(ngModel)]="senha" name="senha" required>
+      </div>
+
+      <button type="submit" class="btn-login">Entrar</button>
+
+      <div class="extra-links">
+        <a routerLink="/senha">Esqueceu a senha?</a>
+        <a routerLink="/cadastro">Criar conta</a>
+      </div>
+
+    </form>
+  </div>
+</div>

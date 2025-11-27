@@ -1,0 +1,89 @@
+<div class="pedidos-container">
+  <div class="pedidos-card">
+    <!-- Carregando -->
+    <div *ngIf="carregando" class="carregando">
+      <h2>Carregando dados do pedido...</h2>
+      <p>Por favor, aguarde.</p>
+    </div>
+
+    <!-- Formulário do Pedido -->
+    <div *ngIf="!carregando">
+      <h2 class="titulo">Confirmar Pedido</h2>
+
+      <!-- Mensagem de sucesso com botão -->
+      <div *ngIf="pedidoConfirmado" class="mensagem-sucesso">
+        <h3>{{ mensagem }}</h3>
+        <p>Número do pedido: #{{ pedido.codigo }}</p>
+        <button type="button" class="btn-home" (click)="irParaInicio()">
+          <span class="material-icons">home</span>
+          Ir para Início
+        </button>
+      </div>
+
+      <!-- Mensagem de erro -->
+      <div *ngIf="mensagem && tipoMensagem === 'erro' && !pedidoConfirmado" class="mensagem-erro">
+        {{ mensagem }}
+      </div>
+
+      <form *ngIf="!pedidoConfirmado" class="form-pedidos" (ngSubmit)="confirmarPedido()" novalidate>
+
+        <!-- Dados do Cliente -->
+        <fieldset class="fieldset-cliente">
+          <legend>Dados do Cliente</legend>
+
+          <div class="form-group">
+            <label for="cpf">CPF</label>
+            <input type="text" id="cpf" [(ngModel)]="cliente!.cpf" name="cpf" disabled>
+          </div>
+
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" [(ngModel)]="cliente!.nome" name="nome" disabled>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" [(ngModel)]="cliente!.email" name="email" disabled>
+          </div>
+
+          <div class="form-group">
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" [(ngModel)]="cliente!.telefone" name="telefone" disabled>
+          </div>
+        </fieldset>
+
+        <!-- Dados do Imóvel -->
+        <fieldset class="fieldset-imovel">
+          <legend>Dados do Imóvel</legend>
+
+          <div class="form-group">
+            <label for="codigoImovel">Código do Imóvel</label>
+            <input type="number" id="codigoImovel" [(ngModel)]="imovel!.codigo" name="codigoImovel" disabled>
+          </div>
+
+          <div class="form-group">
+            <label for="endereco">Endereço</label>
+            <input type="text" id="endereco" [(ngModel)]="imovel!['endereço']" name="endereco" disabled>
+          </div>
+
+          <div class="form-group">
+            <label for="tipo">Tipo</label>
+            <input type="text" id="tipo" [(ngModel)]="imovel!.tipo" name="tipo" disabled>
+          </div>
+
+          <div class="form-group">
+            <label for="valor">Valor</label>
+            <input type="number" id="valor" [(ngModel)]="imovel!.valor" name="valor" disabled step="0.01">
+          </div>
+        </fieldset>
+
+        <!-- Botão de Confirmar -->
+        <button type="submit" class="btn-confirmar" [disabled]="salvando">
+          <span class="material-icons">check_circle</span>
+          {{ salvando ? 'Confirmando...' : 'Confirmar Pedido' }}
+        </button>
+
+      </form>
+    </div>
+  </div>
+</div>

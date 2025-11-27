@@ -1,0 +1,67 @@
+<body>
+
+    <div class="container" *ngIf="!carregando">
+
+        <div class="card" *ngIf="clienteLogado">
+
+            <div class="icone-perfil">
+                <span class="material-icons">account_circle</span>
+            </div>
+
+            <h2 class="nome-usuario">{{ clienteLogado.nome }}</h2>
+            <p class="email-usuario">{{ clienteLogado.email }}</p>
+
+            <hr>
+
+            <div class="info">
+
+                <div class="info-item">
+                    <span class="material-icons">badge</span>
+                    <p><strong>CPF:</strong> {{ clienteLogado.cpf }}</p>
+                </div>
+
+                <div class="info-item">
+                    <span class="material-icons">phone</span>
+                    <p><strong>Telefone:</strong> {{ clienteLogado.telefone }}</p>
+                </div>
+
+                <div class="info-item">
+                    <span class="material-icons">home</span>
+                    <p><strong>Endereço:</strong> {{ clienteLogado.endereco }}, {{ clienteLogado.cidade }}</p>
+                </div>
+
+                <div class="info-item">
+                    <span class="material-icons">location_on</span>
+                    <p><strong>CEP:</strong> {{ clienteLogado.cep }}</p>
+                </div>
+
+            </div>
+
+            <div class="btn-group">
+                <button class="btn-editar" routerLink="/editar">
+                    <span class="material-icons" >edit</span>
+                    Editar Perfil
+                </button>
+                <button class="btn-editar" routerLink="/meus-pedidos">
+                    <span class="material-icons">shopping_bag</span>
+                    Meus Pedidos
+                </button>
+                <button class="btn-editar" (click)="logout()">
+                    <span class="material-icons">logout</span>
+                    Sair
+                </button>
+            </div>
+
+        </div>
+
+        <div class="card" *ngIf="erro">
+            <p class="erro-mensagem">{{ erro }}</p>
+        </div>
+
+    </div>
+
+    <div class="container" *ngIf="carregando">
+        <p>Carregando informações...</p>
+    </div>
+
+</body>

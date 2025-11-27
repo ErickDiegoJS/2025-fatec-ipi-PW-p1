@@ -1,0 +1,56 @@
+<div class="admin-container">
+  <div class="admin-header">
+    <div class="header-content">
+      <h1>Painel de Administração</h1>
+      <p>Bem-vindo, {{ clienteNome }}</p>
+    </div>
+    <button class="btn-logout" (click)="logout()">
+      <span class="material-icons">logout</span>
+      Sair
+    </button>
+  </div>
+
+  <div class="admin-panel">
+    <div class="panel-section">
+      <h2>Gerenciar Imóveis</h2>
+      <div class="button-grid">
+        <button class="btn-admin" routerLink="/admin/editar-imovel" title="Editar um imóvel existente">
+          <span class="material-icons">edit</span>
+          Editar Imóvel
+        </button>
+        <button class="btn-admin" routerLink="/admin/adicionar-imovel" title="Adicionar novo imóvel">
+          <span class="material-icons">add</span>
+          Adicionar Imóvel
+        </button>
+        <button class="btn-admin btn-danger" routerLink="/admin/remover-imovel" title="Remover um imóvel">
+          <span class="material-icons">delete</span>
+          Remover Imóvel
+        </button>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h2>Gerenciar Pedidos</h2>
+      <div class="button-grid">
+        <button class="btn-admin" routerLink="/admin/editar-pedido" title="Editar um pedido existente">
+          <span class="material-icons">edit</span>
+          Editar Pedido
+        </button>
+        <button class="btn-admin btn-danger" routerLink="/admin/remover-pedido" title="Remover um pedido">
+          <span class="material-icons">delete</span>
+          Remover Pedido
+        </button>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h2>Gerenciar Clientes</h2>
+      <div class="button-grid">
+        <button class="btn-admin btn-danger" routerLink="/admin/remover-cliente" title="Remover um cliente">
+          <span class="material-icons">person_remove</span>
+          Remover Cliente
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

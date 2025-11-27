@@ -1,0 +1,64 @@
+<section class="hero">
+    <div class="hero-content">
+        <h1>Encontre o Lar Perfeito Para Você</h1>
+        <p>A melhor seleção de casas e apartamentos com transparência e confiança.</p>
+        <div class="search-box">
+            <input #termo type="text" placeholder="Buscar por cidade, bairro ou tipo de imóvel...">
+            <button (click)="pesquisar(termo.value)">Buscar</button>
+        </div>
+    </div>
+</section>
+<!-- Imóveis em Destaque -->
+<section class="featured py-5">
+    <div class="container">
+        <h2 class="mb-4 text-center">Imóveis em Destaque</h2>
+        <div class="row">
+            <!-- Mensagem quando não houver imóveis -->
+            <div *ngIf="imoveis.length === 0" class="col-12 text-center">
+                <p>Nenhum imóvel disponível no momento.</p>
+            </div>
+
+            <!-- Cards de imóveis -->
+            <div class="col-md-4 mb-4" *ngFor="let imovel of imoveis">
+                <div class="card h-100">
+                    <!-- Imagem baseada no código do imóvel -->
+                    <img [src]="imovel.codigo + '.jpg'" class="card-img-top" [alt]="imovel.tipo">
+                    <div class="card-body">
+                        <!-- Tipo do imóvel -->
+                        <h5 class="card-title">{{ imovel.tipo }}</h5>
+
+                        <p class="card-text">
+                            <span class="material-icons">location_on</span> {{ imovel['endereço'] }}
+                        </p>
+
+                        <p class="card-text">
+                            <span class="material-icons">sell</span> R$ {{ imovel.valor | number:'1.2-2' }}
+                        </p>
+
+                        <p class="card-text">
+                            <span class="material-icons">check_circle</span> {{ imovel.status }}
+                        </p>
+
+                        <button class="btn btn-primary w-100" [routerLink]="['/imovel', imovel.codigo]">
+                            Mais Detalhes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Sessão Sobre a Empresa -->
+<section class="about-section">
+    <div class="about-content">
+        <h2>Por que escolher a nossa imobiliária?</h2>
+        <p> Trabalhamos com dedicação, transparência e foco total no cliente. Nosso objetivo é simplificar sua
+            jornada na busca pelo lar ideal. </p>
+        <p> Da visita até o contrato, estamos ao seu lado. </p>
+    </div>
+</section> <!-- Chamada para Contato -->
+<section class="cta">
+    <h2>Precisa de Ajuda?</h2>
+    <p>Entre em contato com um de nossos especialistas agora mesmo.</p> <button routerLink="/contato">Fale
+        Conosco</button>
+</section>

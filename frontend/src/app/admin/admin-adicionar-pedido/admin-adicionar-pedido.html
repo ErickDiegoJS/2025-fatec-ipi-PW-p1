@@ -1,0 +1,41 @@
+<div class="admin-container">
+  <div class="admin-card">
+    <h2 class="titulo">Adicionar Pedido</h2>
+
+    <!-- Mensagem -->
+    <div *ngIf="mensagem" [ngClass]="tipoMensagem === 'sucesso' ? 'mensagem-sucesso' : 'mensagem-erro'" class="mensagem">
+      {{ mensagem }}
+    </div>
+
+    <!-- Formulário -->
+    <form class="form-pedido" (ngSubmit)="salvarPedido()">
+      <fieldset>
+        <legend>Dados do Pedido</legend>
+
+        <div class="form-group">
+          <label for="cpf">CPF do Cliente *</label>
+          <input type="number" id="cpf" [(ngModel)]="pedido.cpf" name="cpf" required>
+        </div>
+
+        <div class="form-group">
+          <label for="nome">Nome *</label>
+          <input type="text" id="nome" [(ngModel)]="pedido.nome" name="nome" required>
+        </div>
+
+        <div class="form-group">
+          <label for="codigo-imovel">Código do Imóvel *</label>
+          <input type="number" id="codigo-imovel" [(ngModel)]="pedido.codigo_imovel" name="codigo_imovel" required>
+        </div>
+
+        <div class="form-group">
+          <label for="valor">Valor *</label>
+          <input type="number" id="valor" [(ngModel)]="pedido.valor" name="valor" step="0.01" required>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="btn-salvar" [disabled]="salvando">
+        {{ salvando ? 'Adicionando...' : 'Adicionar Pedido' }}
+      </button>
+    </form>
+  </div>
+</div>

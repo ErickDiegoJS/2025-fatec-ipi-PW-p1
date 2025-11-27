@@ -1,0 +1,93 @@
+:root {
+    --cor-fundo: #f2f2f2;
+    --cor-card: #ffffff;
+    --cor-texto: #555555;
+    --cor-texto-secundario: #777777;
+    --cor-card-borda: #dddddd;
+    --cor-icone: #444444;
+    --cor-primaria: #3f51b5;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: var(--cor-fundo);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.card {
+    background: var(--cor-card);
+    width: 380px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1); 
+    text-align: center;
+}
+
+.icone-perfil .material-icons {
+    font-size: 120px;
+    color: var(--cor-texto);
+}
+
+.nome-usuario {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: var(--cor-texto);
+}
+
+.email-usuario {
+    color: var(--cor-texto-secundario);
+    margin-bottom: 20px;
+}
+
+hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid var(--cor-card-borda);
+}
+
+.info {
+    text-align: left;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.info-item .material-icons {
+    font-size: 28px;
+    margin-right: 12px;
+    color: var(--cor-icone);
+}
+
+.btn-editar {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: var(--cor-primaria);
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 2px;
+}
+
+.btn-editar:hover {
+    background: #303f9f; 
+}
+
+.btn-editar .material-icons {
+    font-size: 20px;
+}

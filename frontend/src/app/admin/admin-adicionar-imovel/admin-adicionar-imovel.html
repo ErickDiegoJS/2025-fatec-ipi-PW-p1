@@ -1,0 +1,67 @@
+<div class="admin-container">
+  <div class="admin-card">
+    <h2 class="titulo">Adicionar Imóvel</h2>
+
+    <!-- Mensagem -->
+    <div *ngIf="mensagem" [ngClass]="tipoMensagem === 'sucesso' ? 'mensagem-sucesso' : 'mensagem-erro'" class="mensagem">
+      {{ mensagem }}
+    </div>
+
+    <!-- Formulário -->
+    <form class="form-imovel" (ngSubmit)="salvarImovel()">
+      <fieldset>
+        <legend>Dados do Imóvel</legend>
+
+        <div class="form-group">
+          <label for="tipo">Tipo *</label>
+          <select id="tipo" [(ngModel)]="imovel.tipo" name="tipo">
+            <option value="casa">Casa</option>
+            <option value="apartamento">Apartamento</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="endereco">Endereço *</label>
+          <input type="text" id="endereco" [(ngModel)]="imovel['endereço']" name="endereco" placeholder="Rua, Número..." required>
+        </div>
+
+        <div class="form-group">
+          <label for="cidade">Cidade</label>
+          <input type="text" id="cidade" [(ngModel)]="imovel.cidade" name="cidade">
+        </div>
+
+        <div class="form-group">
+          <label for="estado">Estado</label>
+          <input type="text" id="estado" [(ngModel)]="imovel.estado" name="estado">
+        </div>
+
+        <div class="form-group">
+          <label for="cep">CEP</label>
+          <input type="text" id="cep" [(ngModel)]="imovel.cep" name="cep">
+        </div>
+
+        <div class="form-group">
+          <label for="valor">Valor *</label>
+          <input type="number" id="valor" [(ngModel)]="imovel.valor" name="valor" step="0.01" required>
+        </div>
+
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select id="status" [(ngModel)]="imovel.status" name="status">
+            <option value="disponivel para aluguel">Disponível para Aluguel</option>
+            <option value="disponivel para venda">Disponível para Venda</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="destaque">Destaque</label>
+          <input type="number" id="destaque" [(ngModel)]="imovel.destaque" name="destaque">
+        </div>
+      </fieldset>
+
+      <button type="submit" class="btn-salvar" [disabled]="salvando">
+        {{ salvando ? 'Adicionando...' : 'Adicionar Imóvel' }}
+      </button>
+    </form>
+  </div>
+</div>

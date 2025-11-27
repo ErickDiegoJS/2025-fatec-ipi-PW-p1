@@ -1,0 +1,20 @@
+<div class="ativacao-container">
+  <div class="ativacao-card">
+    <div *ngIf="!ativado && !erro" class="carregando">
+      <h2>⏳ {{ mensagem }}</h2>
+      <p>Por favor, aguarde enquanto ativamos sua conta...</p>
+    </div>
+
+    <div *ngIf="ativado" class="sucesso">
+      <h2>{{ mensagem }}</h2>
+      <p>Sua conta foi ativada com sucesso! Você já pode fazer login e começar a usar nosso site.</p>
+      <a routerLink="/login" class="btn-voltar">Fazer Login</a>
+    </div>
+
+    <div *ngIf="erro" class="erro">
+      <h2>{{ mensagem }}</h2>
+      <p>Não conseguimos ativar sua conta. Por favor, tente novamente ou entre em contato com o suporte.</p>
+      <a routerLink="/contato" class="btn-voltar">Entrar em Contato</a>
+    </div>
+  </div>
+</div>

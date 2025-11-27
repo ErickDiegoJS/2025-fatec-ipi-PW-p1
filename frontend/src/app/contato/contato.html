@@ -1,0 +1,69 @@
+<div class="contato-container">
+
+  <div class="contato-card">
+
+    <h1 class="titulo-contato">
+      <span class="material-icons">mail_outline</span>
+      Entre em Contato
+    </h1>
+
+    <p class="subtitulo">
+      Fale com a equipe da <strong>NextHome Imobiliária</strong>.
+      Estamos prontos para te ajudar a encontrar seu novo lar.
+    </p>
+
+    <div class="infos-contato">
+
+      <div class="info-item">
+        <span class="material-icons">phone_in_talk</span>
+        <div>
+          <strong>Telefone</strong>
+          <p class="info">(11) 99876-5432</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <span class="material-icons">email</span>
+        <div>
+          <strong>E-mail</strong>
+          <p class="info">atendimento@nexthome.com</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <span class="material-icons">location_on</span>
+        <div>
+          <strong>Endereço</strong>
+          <p class="info">Av. Central, 582 — Centro, São Paulo — SP</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <span class="material-icons">schedule</span>
+        <div>
+          <strong>Horário de Atendimento</strong>
+          <p class="info">Seg a Sex — 08:00 às 18:00</p>
+        </div>
+      </div>
+
+    </div>
+
+    <h2 class="titulo-form">
+      <span class="material-icons">chat_bubble_outline</span>
+      Envie uma Mensagem
+    </h2>
+
+    <form class="form-contato" (ngSubmit)="enviar()">
+      <input type="text" placeholder="Seu nome" [(ngModel)]="mensagem.nome" name="nome" required>
+      <input type="email" placeholder="Seu e-mail" [(ngModel)]="mensagem.emailRemetente" name="email" required>
+      <textarea placeholder="Sua mensagem" rows="4" [(ngModel)]="mensagem.texto" name="texto" required></textarea>
+
+      <button type="submit">
+        <span class="material-icons">send</span>
+        Enviar Mensagem
+      </button>
+    </form>
+
+
+  </div>
+</div>

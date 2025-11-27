@@ -19,44 +19,54 @@ public class ImovelController {
     ImovelRepository bd;
 
     @PostMapping("/nexthome/imovel")
-    public void gravar(@RequestBody Imovel imovel){
+    public void gravar(@RequestBody Imovel imovel) {
         bd.save(imovel);
         System.out.println("Imovel gravado!");
     }
 
     @GetMapping("/nexthome/imovel/{codigo}")
-    public Imovel exibir(@PathVariable("codigo") int cod){
+    public Imovel exibir(@PathVariable("codigo") int cod) {
         return bd.existsById(cod) ? bd.findById(cod).get() : new Imovel();
     }
 
     @PutMapping("/nexthome/imovel")
-    public void alterar(@RequestBody Imovel imovel){
-        if(bd.existsById(imovel.getCodigo())){
+    public void alterar(@RequestBody Imovel imovel) {
+        if (bd.existsById(imovel.getCodigo())) {
             bd.save(imovel);
             System.out.println("Alteração bem sucedida!");
         }
     }
 
     @DeleteMapping("/nexthome/imovel/{codigo}")
-    public void remover(@PathVariable("codigo") int cod){
-        if(bd.existsById(cod)){
+    public void remover(@PathVariable("codigo") int cod) {
+        if (bd.existsById(cod)) {
             bd.deleteById(cod);
             System.out.println("Imovel removido!");
         }
     }
 
     @GetMapping("/nexthome/imoveis")
-    public List<Imovel> listar(){
+    public List<Imovel> listar() {
         return bd.findAll();
     }
 
-    @GetMapping("/nexthome/produtos/vitrine")
-    public List<Imovel> mostrarVitrine() {
-        return bd.listarVitrine();
+    @GetMapping("/nexthome/imoveis/disponiveis")
+    public List<Imovel> listarDisponiveis() {
+        return bd.listarDisponiveis("disponivel para aluguel", "disponivel para venda");
     }
 
-    @GetMapping("/nexthome/produtos/busca")      
+    @GetMapping("/nexthome/produtos/vitrine")
+    public List<Imovel> listarVitrine() {
+        return bd.listarVitrine("disponivel para aluguel", "disponivel para venda");
+    }
+
+    @GetMapping("/nexthome/produtos/busca")
     public List<Imovel> buscarProdutos(@RequestParam String termo) {
+        return bd.fazerBusca(termo);
+    }
+
+    @GetMapping("/nexthome/produtos/disponivel/busca")
+    public List<Imovel> buscarProdutosDisponivel(@RequestParam String termo) {
         return bd.fazerBusca(termo);
     }
 }

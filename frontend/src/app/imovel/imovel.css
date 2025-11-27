@@ -1,0 +1,134 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--cor-bg-claro);
+  font-family: Arial, sans-serif;
+  color: var(--cor-texto);
+}
+
+.imovel-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.imovel-card {
+  background: var(--cor-branco);
+  width: 100%;
+  max-width: 900px;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Imagem */
+.imovel-imagem img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+/* Informações */
+.imovel-info {
+  flex: 1;
+  min-width: 260px;
+}
+
+.titulo-imovel {
+  color: var(--cor-primaria);
+  margin: 0 0 10px 0;
+  font-size: 1.8rem;
+}
+
+.localizacao {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--cor-texto);
+  margin-bottom: 15px;
+}
+
+.material-icons {
+  vertical-align: middle;
+  color: var(--cor-secundaria);
+}
+
+.descricao {
+  margin-bottom: 25px;
+  color: var(--cor-texto);
+}
+
+.caracteristicas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 25px;
+  margin-bottom: 25px;
+}
+
+.caracteristica-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--cor-bg-claro);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  color: var(--cor-texto);
+}
+
+.preco {
+  margin: 18px 0;
+}
+
+.valor {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--cor-primaria);
+}
+
+.condicao {
+  margin-left: 10px;
+  color: var(--cor-texto);
+}
+
+/* Botão */
+.btn-comprar {
+  width: 100%;
+  background: var(--cor-secundaria);
+  color: var(--cor-branco);
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: 0.3s;
+}
+
+.btn-comprar:hover {
+  opacity: 0.9;
+}
+
+/* Responsivo */
+@media (max-width: 760px) {
+  .imovel-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imovel-info {
+    text-align: center;
+  }
+
+  .caracteristicas {
+    justify-content: center;
+  }
+}

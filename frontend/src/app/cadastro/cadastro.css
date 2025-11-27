@@ -1,0 +1,92 @@
+
+.cadastro-container {
+  min-height: calc(100vh - 160px); 
+  padding-top: 80px;  
+  padding-bottom: 80px; 
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.cadastro-card {
+  background: var(--brand-white);
+  width: 420px;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  animation: fadeIn 0.4s ease;
+}
+
+.cadastro-card h2 {
+  margin: 0;
+  color: var(--brand-dark);
+  font-size: 28px;
+}
+
+.cadastro-card p {
+  margin-top: 6px;
+  color: #555;
+}
+
+.input-group {
+  margin-top: 15px;
+}
+
+.input-group label {
+  font-weight: 600;
+  color: var(--brand-dark);
+}
+
+.input-group input {
+  width: 100%;
+  margin-top: 5px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid var(--brand-light);
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.input-group input:focus {
+  border-color: var(--brand-medium);
+}
+
+.btn-cadastrar {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: var(--cor-secundaria);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-cadastrar:hover {
+  filter: brightness(0.9);
+}
+
+.extra-links {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.extra-links a {
+  color: var(--brand-medium);
+  text-decoration: none;
+}
+
+.extra-links a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,87 @@
+<body>
+
+  <div class="compra-container">
+
+    <!-- LADO ESQUERDO — DADOS DO IMÓVEL -->
+    <div class="imovel-info">
+  <img src="assets/casa-exemplo.jpg" alt="Imagem do imóvel" class="imovel-img">
+
+  <h2 class="imovel-titulo">
+    <span class="material-icons">home</span>
+    Casa Premium no Centro
+  </h2>
+
+  <p class="imovel-descricao">
+    <span class="material-icons">description</span>
+    Casa ampla com 3 quartos, 2 banheiros, sala, cozinha moderna e garagem para 2 carros.
+    Localizada próxima a mercados, escolas e transporte público.
+  </p>
+
+  <ul class="imovel-detalhes">
+    <li>
+      <span class="material-icons">payments</span>
+      <strong>Preço:</strong> R$ 450.000,00
+    </li>
+
+    <li>
+      <span class="material-icons">straighten</span>
+      <strong>Área:</strong> 140 m²
+    </li>
+
+    <li>
+      <span class="material-icons">place</span>
+      <strong>Localização:</strong> Rua das Flores, 123
+    </li>
+
+    <li>
+      <span class="material-icons">house_siding</span>
+      <strong>Tipo:</strong> Casa
+    </li>
+  </ul>
+</div>
+
+
+    <!-- LADO DIREITO — CONFIRMAÇÃO DE PAGAMENTO -->
+    <div class="pagamento-info">
+
+      <h3>Confirmação de Pagamento</h3>
+
+      <form class="form-pagamento">
+        <label>
+          Nome Completo:
+          <input type="text" placeholder="Digite seu nome" required>
+        </label>
+
+        <label>
+          CPF:
+          <input type="text" placeholder="Digite seu CPF" required>
+        </label>
+
+        <label>
+          Forma de Pagamento:
+          <select required>
+            <option disabled selected>Selecione...</option>
+            <option>Cartão de Crédito</option>
+            <option>Cartão de Débito</option>
+            <option>Pix</option>
+            <option>Boleto Bancário</option>
+          </select>
+        </label>
+
+        <label>
+          Email de Confirmação:
+          <input type="email" placeholder="Digite seu email" required>
+        </label>
+
+        <button class="btn-finalizar">Finalizar Compra</button>
+      </form>
+
+      <p class="mensagem-email">
+        Após a confirmação, você receberá um email com todos os detalhes da compra.
+      </p>
+
+    </div>
+
+  </div>
+
+</body>

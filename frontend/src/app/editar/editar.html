@@ -1,0 +1,57 @@
+<div class="editar-container" *ngIf="!mensagemFinal">
+  <div class="editar-card">
+
+    <h2>Editar dados da conta</h2>
+    <p>Preencha apenas os campos que deseja mudar</p>
+
+    <form class="editar-form" (ngSubmit)="alterar()" novalidate>
+      <div class="input-group">
+        <label for="nome">Nome</label>
+        <input id="nome" type="text" [(ngModel)]="cliente.nome" name="nome">
+      </div>
+
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" [(ngModel)]="cliente.email" name="email">
+      </div>
+
+      <div class="input-group">
+        <label for="telefone">Telefone</label>
+        <input id="telefone" type="tel" [(ngModel)]="cliente.telefone" name="telefone">
+      </div>
+
+      <div class="input-group">
+        <label for="cidade">Cidade</label>
+        <input id="cidade" type="text" [(ngModel)]="cliente.cidade" name="cidade">
+      </div>
+
+      <div class="input-group">
+        <label for="cep">CEP</label>
+        <input id="cep" type="text" [(ngModel)]="cliente.cep" name="cep">
+      </div>
+
+      <div class="input-group">
+        <label for="endereco">Endereço</label>
+        <input id="endereco" type="text" [(ngModel)]="cliente.endereco" name="endereco">
+      </div>
+
+      <div class="input-group">
+        <label for="senha">Senha</label>
+        <input id="senha" type="password" [(ngModel)]="cliente.senha" name="senha">
+      </div>
+
+      <button class="btn-cadastrar" type="submit" >Editar</button>
+
+    </form>
+
+  </div>
+</div>
+
+<!-- Mensagem exibida após cadastrar -->
+<div class="editar-container" *ngIf="mensagemFinal">
+    <div class="editar-card">
+        <h2>Perfil editado 📩</h2>
+        <p>Suas informações foram editadas com sucesso, logue novamente!</p>
+        <button class="btn-cadastrar"  routerLink="/cliente">Voltar</button>
+    </div>
+</div>

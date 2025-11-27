@@ -1,0 +1,100 @@
+
+/* ============================
+   ESTILOS PRINCIPAIS
+   ============================ */
+body {
+  margin: 0;
+  padding: 20px;
+  background: var(--cor-fundo);
+  font-family: Arial, sans-serif;
+  color: var(--cor-texto);
+}
+
+/* Container principal (lado a lado) */
+.compra-container {
+  display: flex;
+  gap: 30px;
+  padding: 25px;
+  background: var(--cor-container);
+  border-radius: 12px;
+}
+
+/* LADO ESQUERDO */
+.imovel-info {
+  width: 55%;
+}
+
+.imovel-img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.imovel-titulo {
+  margin: 10px 0;
+  color: var(--cor-destaque);
+}
+
+.imovel-detalhes li {
+  margin: 6px 0;
+}
+
+/* LADO DIREITO */
+.pagamento-info {
+  width: 45%;
+}
+
+.form-pagamento {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-pagamento input,
+.form-pagamento select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: var(--cor-input);
+}
+
+.btn-finalizar {
+  margin-top: 10px;
+  padding: 12px;
+  font-size: 16px;
+  background: var(--cor-botao);
+  color: var(--cor-botao-texto);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.imovel-detalhes li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.material-icons {
+  font-size: 22px;
+  color: var(--cor-destaque);
+}
+
+.imovel-descricao .material-icons,
+.imovel-titulo .material-icons {
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+/* ============================
+   SOMBRA E HOVER (fora do topo)
+   ============================ */
+.compra-container {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-finalizar:hover {
+  background: #005fa3;
+}
+

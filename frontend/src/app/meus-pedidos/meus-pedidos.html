@@ -1,0 +1,46 @@
+<div class="meus-pedidos-container">
+  <div class="meus-pedidos-header">
+    <h1 class="titulo">Meus Pedidos</h1>
+    <p class="descricao">Acompanhe o histórico de todos os seus pedidos</p>
+  </div>
+
+  <!-- Carregando -->
+  <div *ngIf="carregando" class="carregando">
+    <h2>Carregando seus pedidos...</h2>
+    <p>Por favor, aguarde.</p>
+  </div>
+
+  <!-- Mensagem de erro ou sem pedidos -->
+  <div *ngIf="!carregando && mensagem" class="mensagem-vazia">
+    <p>{{ mensagem }}</p>
+  </div>
+
+  <!-- Lista de Pedidos -->
+  <div *ngIf="!carregando && pedidos.length > 0" class="pedidos-lista">
+    <div *ngFor="let pedido of pedidos" class="pedido-card">
+      <div class="pedido-header">
+        <div class="pedido-info">
+          <h3 class="pedido-codigo">Pedido #{{ pedido.codigo }}</h3>
+          <p class="pedido-imovel">Imóvel: {{ pedido.codigo_imovel }}</p>
+        </div>
+      </div>
+
+      <div class="pedido-body">
+        <div class="pedido-row">
+          <span class="pedido-label">Nome:</span>
+          <span class="pedido-valor">{{ pedido.nome }}</span>
+        </div>
+
+        <div class="pedido-row">
+          <span class="pedido-label">CPF:</span>
+          <span class="pedido-valor">{{ pedido.cpf }}</span>
+        </div>
+
+        <div class="pedido-row">
+          <span class="pedido-label">Valor:</span>
+          <span class="pedido-valor pedido-valor-destaque">R$ {{ pedido.valor }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
